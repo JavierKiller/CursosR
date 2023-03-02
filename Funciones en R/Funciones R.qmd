@@ -1,0 +1,5 @@
+---
+title: "Funciones R"
+format: pdf
+editor: visual
+---
