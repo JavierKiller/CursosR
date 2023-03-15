@@ -1,0 +1,1609 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Funciones R</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="Funciones R_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Funciones R_files/libs/quarto-html/quarto.js"></script>
+<script src="Funciones R_files/libs/quarto-html/popper.min.js"></script>
+<script src="Funciones R_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Funciones R_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Funciones R_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Funciones R_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Funciones R_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Funciones R_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Funciones R_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#how-to-write-a-function" id="toc-how-to-write-a-function" class="nav-link active" data-scroll-target="#how-to-write-a-function"><span class="toc-section-number">1</span>  How to Write a Function</a>
+  <ul class="collapse">
+  <li><a href="#calling-functions" id="toc-calling-functions" class="nav-link" data-scroll-target="#calling-functions"><span class="toc-section-number">1.1</span>  Calling functions</a></li>
+  <li><a href="#instructions-100-xp" id="toc-instructions-100-xp" class="nav-link" data-scroll-target="#instructions-100-xp"><span class="toc-section-number">1.2</span>  Instructions <code>100 XP</code></a></li>
+  <li><a href="#the-benefits-of-writing-functions" id="toc-the-benefits-of-writing-functions" class="nav-link" data-scroll-target="#the-benefits-of-writing-functions"><span class="toc-section-number">1.3</span>  The benefits of writing functions</a></li>
+  <li><a href="#answer-the-question-50xp" id="toc-answer-the-question-50xp" class="nav-link" data-scroll-target="#answer-the-question-50xp"><span class="toc-section-number">1.4</span>  Answer the question <code>50XP</code></a></li>
+  <li><a href="#your-first-function-tossing-a-coin" id="toc-your-first-function-tossing-a-coin" class="nav-link" data-scroll-target="#your-first-function-tossing-a-coin"><span class="toc-section-number">1.5</span>  Your first function: tossing a coin</a></li>
+  <li><a href="#instructions-100-xp-1" id="toc-instructions-100-xp-1" class="nav-link" data-scroll-target="#instructions-100-xp-1"><span class="toc-section-number">1.6</span>  Instructions <code>100 XP</code></a></li>
+  <li><a href="#nputs-to-functions" id="toc-nputs-to-functions" class="nav-link" data-scroll-target="#nputs-to-functions"><span class="toc-section-number">1.7</span>  nputs to functions</a></li>
+  <li><a href="#instructions-100-xp-2" id="toc-instructions-100-xp-2" class="nav-link" data-scroll-target="#instructions-100-xp-2"><span class="toc-section-number">1.8</span>  Instructions <code>100 XP</code></a></li>
+  <li><a href="#multiple-inputs-to-functions" id="toc-multiple-inputs-to-functions" class="nav-link" data-scroll-target="#multiple-inputs-to-functions"><span class="toc-section-number">1.9</span>  Multiple inputs to functions</a></li>
+  <li><a href="#renaming-glm" id="toc-renaming-glm" class="nav-link" data-scroll-target="#renaming-glm"><span class="toc-section-number">1.10</span>  Renaming GLM</a></li>
+  <li><a href="#instructions-100-xp-3" id="toc-instructions-100-xp-3" class="nav-link" data-scroll-target="#instructions-100-xp-3"><span class="toc-section-number">1.11</span>  Instructions <code>100 XP</code></a></li>
+  <li><a href="#numeric-defaults" id="toc-numeric-defaults" class="nav-link" data-scroll-target="#numeric-defaults"><span class="toc-section-number">1.12</span>  Numeric defaults</a></li>
+  <li><a href="#instructions-100-xp-4" id="toc-instructions-100-xp-4" class="nav-link" data-scroll-target="#instructions-100-xp-4"><span class="toc-section-number">1.13</span>  Instructions <code>100 XP</code></a></li>
+  <li><a href="#logical-defaults" id="toc-logical-defaults" class="nav-link" data-scroll-target="#logical-defaults"><span class="toc-section-number">1.14</span>  Logical defaults</a></li>
+  <li><a href="#instructions-100-xp-5" id="toc-instructions-100-xp-5" class="nav-link" data-scroll-target="#instructions-100-xp-5"><span class="toc-section-number">1.15</span>  Instructions <code>100 XP</code></a></li>
+  </ul></li>
+  <li><a href="#all-about-arguments" id="toc-all-about-arguments" class="nav-link" data-scroll-target="#all-about-arguments"><span class="toc-section-number">2</span>  All About Arguments</a>
+  <ul class="collapse">
+  <li><a href="#null-defaults" id="toc-null-defaults" class="nav-link" data-scroll-target="#null-defaults"><span class="toc-section-number">2.1</span>  NULL defaults</a></li>
+  <li><a href="#instructions-100-xp-6" id="toc-instructions-100-xp-6" class="nav-link" data-scroll-target="#instructions-100-xp-6"><span class="toc-section-number">2.2</span>  Instructions <code>100 XP</code></a></li>
+  <li><a href="#categorical-defaults" id="toc-categorical-defaults" class="nav-link" data-scroll-target="#categorical-defaults"><span class="toc-section-number">2.3</span>  Categorical defaults</a></li>
+  <li><a href="#instructions-100-xp-7" id="toc-instructions-100-xp-7" class="nav-link" data-scroll-target="#instructions-100-xp-7"><span class="toc-section-number">2.4</span>  Instructions <code>100 XP</code></a></li>
+  <li><a href="#harmonic-mean" id="toc-harmonic-mean" class="nav-link" data-scroll-target="#harmonic-mean"><span class="toc-section-number">2.5</span>  Harmonic mean</a></li>
+  <li><a href="#instructions-100-xp-8" id="toc-instructions-100-xp-8" class="nav-link" data-scroll-target="#instructions-100-xp-8"><span class="toc-section-number">2.6</span>  Instructions <code>100 XP</code></a></li>
+  <li><a href="#dealing-with-missing-values" id="toc-dealing-with-missing-values" class="nav-link" data-scroll-target="#dealing-with-missing-values"><span class="toc-section-number">2.7</span>  Dealing with missing values</a></li>
+  <li><a href="#instructions-100-xp-9" id="toc-instructions-100-xp-9" class="nav-link" data-scroll-target="#instructions-100-xp-9"><span class="toc-section-number">2.8</span>  Instructions <code>100 XP</code></a></li>
+  <li><a href="#passing-arguments-with" id="toc-passing-arguments-with" class="nav-link" data-scroll-target="#passing-arguments-with"><span class="toc-section-number">2.9</span>  Passing arguments with …</a></li>
+  <li><a href="#instructions-100-xp-10" id="toc-instructions-100-xp-10" class="nav-link" data-scroll-target="#instructions-100-xp-10"><span class="toc-section-number">2.10</span>  Instructions <code>100 XP</code></a></li>
+  <li><a href="#throwing-errors-with-bad-arguments" id="toc-throwing-errors-with-bad-arguments" class="nav-link" data-scroll-target="#throwing-errors-with-bad-arguments"><span class="toc-section-number">2.11</span>  Throwing errors with bad arguments</a></li>
+  <li><a href="#instructions-100-xp-11" id="toc-instructions-100-xp-11" class="nav-link" data-scroll-target="#instructions-100-xp-11"><span class="toc-section-number">2.12</span>  Instructions <code>100 XP</code></a></li>
+  <li><a href="#custom-error-logic" id="toc-custom-error-logic" class="nav-link" data-scroll-target="#custom-error-logic"><span class="toc-section-number">2.13</span>  Custom error logic</a></li>
+  <li><a href="#instructions-100-xp-12" id="toc-instructions-100-xp-12" class="nav-link" data-scroll-target="#instructions-100-xp-12"><span class="toc-section-number">2.14</span>  Instructions <code>100 XP</code></a></li>
+  <li><a href="#fixing-function-arguments" id="toc-fixing-function-arguments" class="nav-link" data-scroll-target="#fixing-function-arguments"><span class="toc-section-number">2.15</span>  Fixing function arguments</a></li>
+  </ul></li>
+  <li><a href="#return-values-and-scope" id="toc-return-values-and-scope" class="nav-link" data-scroll-target="#return-values-and-scope"><span class="toc-section-number">3</span>  Return Values and Scope</a>
+  <ul class="collapse">
+  <li><a href="#returning-early" id="toc-returning-early" class="nav-link" data-scroll-target="#returning-early"><span class="toc-section-number">3.1</span>  Returning early</a></li>
+  <li><a href="#instructions-100-xp-13" id="toc-instructions-100-xp-13" class="nav-link" data-scroll-target="#instructions-100-xp-13"><span class="toc-section-number">3.2</span>  Instructions <code>100 XP</code></a></li>
+  <li><a href="#returning-invisibly" id="toc-returning-invisibly" class="nav-link" data-scroll-target="#returning-invisibly"><span class="toc-section-number">3.3</span>  Returning invisibly</a></li>
+  <li><a href="#instructions-100-xp-14" id="toc-instructions-100-xp-14" class="nav-link" data-scroll-target="#instructions-100-xp-14"><span class="toc-section-number">3.4</span>  Instructions <code>100 XP</code></a></li>
+  <li><a href="#returning-many-things" id="toc-returning-many-things" class="nav-link" data-scroll-target="#returning-many-things"><span class="toc-section-number">3.5</span>  Returning many things</a></li>
+  <li><a href="#instructions-100-xp-15" id="toc-instructions-100-xp-15" class="nav-link" data-scroll-target="#instructions-100-xp-15"><span class="toc-section-number">3.6</span>  Instructions <code>100 XP</code></a></li>
+  <li><a href="#returning-metadata" id="toc-returning-metadata" class="nav-link" data-scroll-target="#returning-metadata"><span class="toc-section-number">3.7</span>  Returning metadata</a></li>
+  <li><a href="#creating-and-exploring-environments" id="toc-creating-and-exploring-environments" class="nav-link" data-scroll-target="#creating-and-exploring-environments"><span class="toc-section-number">3.8</span>  Creating and exploring environments</a></li>
+  <li><a href="#instructions-100-xp-16" id="toc-instructions-100-xp-16" class="nav-link" data-scroll-target="#instructions-100-xp-16"><span class="toc-section-number">3.9</span>  Instructions <code>100 XP</code></a></li>
+  <li><a href="#do-variables-exist" id="toc-do-variables-exist" class="nav-link" data-scroll-target="#do-variables-exist"><span class="toc-section-number">3.10</span>  Do variables exist?</a></li>
+  <li><a href="#instructions-100-xp-17" id="toc-instructions-100-xp-17" class="nav-link" data-scroll-target="#instructions-100-xp-17"><span class="toc-section-number">3.11</span>  Instructions <code>100 XP</code></a></li>
+  <li><a href="#variable-precedence-1" id="toc-variable-precedence-1" class="nav-link" data-scroll-target="#variable-precedence-1"><span class="toc-section-number">3.12</span>  Variable precedence 1</a></li>
+  <li><a href="#answer-the-question-50xp-1" id="toc-answer-the-question-50xp-1" class="nav-link" data-scroll-target="#answer-the-question-50xp-1"><span class="toc-section-number">3.13</span>  Answer the question <code>50XP</code></a></li>
+  <li><a href="#variable-precedence-2" id="toc-variable-precedence-2" class="nav-link" data-scroll-target="#variable-precedence-2"><span class="toc-section-number">3.14</span>  Variable precedence 2</a></li>
+  <li><a href="#answer-the-question-50xp-2" id="toc-answer-the-question-50xp-2" class="nav-link" data-scroll-target="#answer-the-question-50xp-2"><span class="toc-section-number">3.15</span>  Answer the question <code>50XP</code></a></li>
+  </ul></li>
+  <li><a href="#case-study-on-grain-yields" id="toc-case-study-on-grain-yields" class="nav-link" data-scroll-target="#case-study-on-grain-yields"><span class="toc-section-number">4</span>  Case Study on Grain Yields</a>
+  <ul class="collapse">
+  <li><a href="#converting-areas-to-metric-1" id="toc-converting-areas-to-metric-1" class="nav-link" data-scroll-target="#converting-areas-to-metric-1"><span class="toc-section-number">4.1</span>  Converting areas to metric 1</a></li>
+  <li><a href="#instructions-100-xp-18" id="toc-instructions-100-xp-18" class="nav-link" data-scroll-target="#instructions-100-xp-18"><span class="toc-section-number">4.2</span>  Instructions <code>100 XP</code></a></li>
+  <li><a href="#converting-areas-to-metric-2" id="toc-converting-areas-to-metric-2" class="nav-link" data-scroll-target="#converting-areas-to-metric-2"><span class="toc-section-number">4.3</span>  Converting areas to metric 2</a></li>
+  <li><a href="#instructions-100-xp-19" id="toc-instructions-100-xp-19" class="nav-link" data-scroll-target="#instructions-100-xp-19"><span class="toc-section-number">4.4</span>  Instructions <code>100 XP</code></a></li>
+  <li><a href="#converting-yields-to-metric" id="toc-converting-yields-to-metric" class="nav-link" data-scroll-target="#converting-yields-to-metric"><span class="toc-section-number">4.5</span>  Converting yields to metric</a></li>
+  <li><a href="#instructions-100-xp-20" id="toc-instructions-100-xp-20" class="nav-link" data-scroll-target="#instructions-100-xp-20"><span class="toc-section-number">4.6</span>  Instructions <code>100 XP</code></a></li>
+  <li><a href="#applying-the-unit-conversion" id="toc-applying-the-unit-conversion" class="nav-link" data-scroll-target="#applying-the-unit-conversion"><span class="toc-section-number">4.7</span>  Applying the unit conversion</a></li>
+  <li><a href="#instructions-100-xp-21" id="toc-instructions-100-xp-21" class="nav-link" data-scroll-target="#instructions-100-xp-21"><span class="toc-section-number">4.8</span>  Instructions <code>100 XP</code></a></li>
+  <li><a href="#plotting-yields-over-time" id="toc-plotting-yields-over-time" class="nav-link" data-scroll-target="#plotting-yields-over-time"><span class="toc-section-number">4.9</span>  Plotting yields over time</a></li>
+  <li><a href="#instructions-100-xp-22" id="toc-instructions-100-xp-22" class="nav-link" data-scroll-target="#instructions-100-xp-22"><span class="toc-section-number">4.10</span>  Instructions <code>100 XP</code></a></li>
+  <li><a href="#a-nation-divided" id="toc-a-nation-divided" class="nav-link" data-scroll-target="#a-nation-divided"><span class="toc-section-number">4.11</span>  A nation divided</a></li>
+  <li><a href="#instructions-100-xp-23" id="toc-instructions-100-xp-23" class="nav-link" data-scroll-target="#instructions-100-xp-23"><span class="toc-section-number">4.12</span>  Instructions <code>100 XP</code></a></li>
+  <li><a href="#plotting-yields-over-time-by-region" id="toc-plotting-yields-over-time-by-region" class="nav-link" data-scroll-target="#plotting-yields-over-time-by-region"><span class="toc-section-number">4.13</span>  Plotting yields over time by region</a></li>
+  <li><a href="#instructions-100-xp-24" id="toc-instructions-100-xp-24" class="nav-link" data-scroll-target="#instructions-100-xp-24"><span class="toc-section-number">4.14</span>  Instructions <code>100 XP</code></a></li>
+  <li><a href="#running-a-model" id="toc-running-a-model" class="nav-link" data-scroll-target="#running-a-model"><span class="toc-section-number">4.15</span>  Running a model</a></li>
+  <li><a href="#instructions-100-xp-25" id="toc-instructions-100-xp-25" class="nav-link" data-scroll-target="#instructions-100-xp-25"><span class="toc-section-number">4.16</span>  Instructions <code>100 XP</code></a></li>
+  <li><a href="#making-yield-predictions" id="toc-making-yield-predictions" class="nav-link" data-scroll-target="#making-yield-predictions"><span class="toc-section-number">4.17</span>  Making yield predictions</a></li>
+  <li><a href="#instructions-100-xp-26" id="toc-instructions-100-xp-26" class="nav-link" data-scroll-target="#instructions-100-xp-26"><span class="toc-section-number">4.18</span>  Instructions <code>100 XP</code></a></li>
+  <li><a href="#do-it-all-over-again" id="toc-do-it-all-over-again" class="nav-link" data-scroll-target="#do-it-all-over-again"><span class="toc-section-number">4.19</span>  Do it all over again</a></li>
+  <li><a href="#instructions-100-xp-27" id="toc-instructions-100-xp-27" class="nav-link" data-scroll-target="#instructions-100-xp-27"><span class="toc-section-number">4.20</span>  Instructions <code>100 XP</code></a></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Funciones R</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="how-to-write-a-function" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> How to Write a Function</h1>
+<section id="calling-functions" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="calling-functions"><span class="header-section-number">1.1</span> Calling functions</h2>
+<p>One way to make your code more readable is to be careful about the order you pass arguments when you call functions, and whether you pass the arguments by position or by name.</p>
+<p>gold_medals, a numeric vector of the number of gold medals won by each country in the 2016 Summer Olympics, is provided.</p>
+<p>For convenience, the arguments of median() and rank() are displayed using args(). Setting rank()’s na.last argument to “keep” means “keep the rank of NA values as NA”.</p>
+<p>Best practice for calling functions is to include them in the order shown by args(), and to only name rare arguments.</p>
+</section>
+<section id="instructions-100-xp" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="instructions-100-xp"><span class="header-section-number">1.2</span> Instructions <code>100 XP</code></h2>
+<ul>
+<li><p>The final line calculates the median number of gold medals each country won.</p></li>
+<li><p>Rewrite the call to median(), following best practices.</p></li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>E1.R</strong></pre>
+</div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Look at the gold medals data</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>gold_medals</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Note the arguments to median()</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">args</span>(median)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Rewrite this function call, following best practices</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(gold_medals, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="the-benefits-of-writing-functions" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="the-benefits-of-writing-functions"><span class="header-section-number">1.3</span> The benefits of writing functions</h2>
+<p>There are lots of great reasons that you should write your own functions.</p>
+<p>Which of these is not one of them?</p>
+</section>
+<section id="answer-the-question-50xp" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="answer-the-question-50xp"><span class="header-section-number">1.4</span> Answer the question <code>50XP</code></h2>
+<p>Possible Answers</p>
+<ul>
+<li><p>You can type less code, saving effort and making your analyses more readable. Respuesta</p></li>
+<li><p>You make less “copy and paste”-related errors.</p></li>
+<li><p>You can reuse your code from project to project.</p></li>
+<li><p>You can make your code harder to read, potentially improving your job security because only you can maintain it.</p></li>
+</ul>
+</section>
+<section id="your-first-function-tossing-a-coin" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="your-first-function-tossing-a-coin"><span class="header-section-number">1.5</span> Your first function: tossing a coin</h2>
+<p>Time to write your first function! It’s a really good idea when writing functions to start simple. You can always make a function more complicated later if it’s really necessary, so let’s not worry about arguments for now.</p>
+</section>
+<section id="instructions-100-xp-1" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="instructions-100-xp-1"><span class="header-section-number">1.6</span> Instructions <code>100 XP</code></h2>
+<ul>
+<li>Simulate a single coin toss by using sample() to sample from coin_sides once.</li>
+<li>Write a template for your function, naming it toss_coin. The function should take no arguments. Don’t include the body of the function yet.</li>
+<li>Copy your script, and paste it into the function body.</li>
+<li>Call your function.</li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>E2.R</strong></pre>
+</div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>coin_sides <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"head"</span>, <span class="st">"tail"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample from coin_sides once</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(coin_sides,<span class="dv">1</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Write a template for your function, toss_coin()</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>toss_coin <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># (Leave the contents of the body for later)</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Add punctuation to finish the body</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Your script, from a previous step</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>coin_sides <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"head"</span>, <span class="st">"tail"</span>)</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Paste your script into the function body</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>toss_coin <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample</span>(coin_sides, <span class="dv">1</span>)</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Your functions, from previous steps</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>toss_coin <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>  coin_sides <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"head"</span>, <span class="st">"tail"</span>)</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample</span>(coin_sides, <span class="dv">1</span>)</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Call your function</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="fu">toss_coin</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="nputs-to-functions" class="level2" data-number="1.7">
+<h2 data-number="1.7" class="anchored" data-anchor-id="nputs-to-functions"><span class="header-section-number">1.7</span> nputs to functions</h2>
+<p>Most functions require some sort of input to determine what to compute. The inputs to functions are called arguments. You specify them inside the parentheses after the word “function.”</p>
+<p>As mentioned in the video, the following exercises assume that you are using sample() to do random sampling.</p>
+</section>
+<section id="instructions-100-xp-2" class="level2" data-number="1.8">
+<h2 data-number="1.8" class="anchored" data-anchor-id="instructions-100-xp-2"><span class="header-section-number">1.8</span> Instructions <code>100 XP</code></h2>
+<ul>
+<li>Sample from coin_sides n_flips times with replacement.</li>
+<li>Update the definition of toss_coin() to accept a single argument, n_flips. The function should sample coin_sides n_flips times with replacement. Remember to change the signature and the body.</li>
+<li>Generate 10 coin flips.</li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>E3.R</strong></pre>
+</div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>coin_sides <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"head"</span>, <span class="st">"tail"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>n_flips <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample from coin_sides n_flips times with replacement</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(coin_sides,n_flips,<span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Update the function to return n coin tosses</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>toss_coin <span class="ot">&lt;-</span> <span class="cf">function</span>(n_flips) {</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  coin_sides <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"head"</span>, <span class="st">"tail"</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample</span>(coin_sides, n_flips,<span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate 10 coin tosses</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="fu">toss_coin</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="multiple-inputs-to-functions" class="level2" data-number="1.9">
+<h2 data-number="1.9" class="anchored" data-anchor-id="multiple-inputs-to-functions"><span class="header-section-number">1.9</span> Multiple inputs to functions</h2>
+<p>If a function should have more than one argument, list them in the function signature, separated by commas.</p>
+<p>To solve this exercise, you need to know how to specify sampling weights to sample(). Set the prob argument to a numeric vector with the same length as x. Each value of prob is the probability of sampling the corresponding element of x, so their values add up to one. In the following example, each sample has a 20% chance of “bat”, a 30% chance of “cat” and a 50% chance of “rat”.</p>
+<blockquote class="blockquote">
+<p>sample(c(“bat”, “cat”, “rat”), 10, replace = TRUE, prob = c(0.2, 0.3, 0.5))</p>
+</blockquote>
+<p>##Instructions <code>100 XP</code></p>
+<ul>
+<li>Bias the coin by weighting the sampling. Specify the prob argument so that heads are sampled with probability p_head (and tails are sampled with probability 1 - p_head).</li>
+<li>Update the definition of toss_coin() so it accepts an argument, p_head, and weights the samples using the code you wrote in the previous step.</li>
+<li>Generate 10 coin tosses with an 80% chance of each head.</li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>E4.R</strong></pre>
+</div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>coin_sides <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"head"</span>, <span class="st">"tail"</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>n_flips <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>p_head <span class="ot">&lt;-</span> <span class="fl">0.8</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a vector of weights</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>weights <span class="ot">&lt;-</span> <span class="fu">c</span>(p_head, <span class="dv">1</span> <span class="sc">-</span> p_head)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Update so that heads are sampled with prob p_head</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(coin_sides, n_flips, <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">prob =</span> weights)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Update the function so heads have probability p_head</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>toss_coin <span class="ot">&lt;-</span> <span class="cf">function</span>(n_flips,p_head) {</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  coin_sides <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"head"</span>, <span class="st">"tail"</span>)</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Define a vector of weights</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  weights <span class="ot">&lt;-</span> <span class="fu">c</span>(p_head,<span class="dv">1</span><span class="sc">-</span>p_head)</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Modify the sampling to be weighted</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample</span>(coin_sides, n_flips, <span class="at">replace =</span> <span class="cn">TRUE</span>,<span class="at">prob=</span>weights)</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate 10 coin tosses</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="fu">toss_coin</span>(<span class="dv">10</span>,<span class="fl">0.8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="renaming-glm" class="level2" data-number="1.10">
+<h2 data-number="1.10" class="anchored" data-anchor-id="renaming-glm"><span class="header-section-number">1.10</span> Renaming GLM</h2>
+<p>R’s generalized linear regression function, glm(), suffers the same usability problems as lm(): its name is an acronym, and its formula and data arguments are in the wrong order.</p>
+<p>To solve this exercise, you need to know two things about generalized linear regression:</p>
+<p>glm() formulas are specified like lm() formulas: response is on the left, and explanatory variables are added on the right. To model count data, set glm()’s family argument to poisson, making it a Poisson regression. Here you’ll use data on the number of yearly visits to Snake River at Jackson Hole, Wyoming, snake_river_visits.</p>
+</section>
+<section id="instructions-100-xp-3" class="level2" data-number="1.11">
+<h2 data-number="1.11" class="anchored" data-anchor-id="instructions-100-xp-3"><span class="header-section-number">1.11</span> Instructions <code>100 XP</code></h2>
+<ul>
+<li><p>Run a generalized linear regression by calling glm(). Model n_visits vs.&nbsp;gender, income, and travel on the snake_river_visits dataset, setting the family to poisson.</p></li>
+<li><p>Define a function, run_poisson_regression(), to run a Poisson regression. This should take two arguments: data and formula, and call glm(), passing those arguments and setting family to poisson.</p></li>
+<li><p>Recreate the Poisson regression model from the first step, this time by calling your run_poisson_regression() function.</p></li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>E5.R</strong></pre>
+</div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run a generalized linear regression </span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glm</span>(</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Model no. of visits vs. gender, income, travel</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  n_visits <span class="sc">~</span> gender <span class="sc">+</span> income <span class="sc">+</span> travel, </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Use the snake_river_visits dataset</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> snake_river_visits, </span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Make it a Poisson regression</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">family =</span> poisson</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Write a function to run a Poisson regression</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>run_poisson_regression <span class="ot">&lt;-</span> <span class="cf">function</span>(data, formula) {</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">glm</span>(formula, data, <span class="at">family =</span> poisson)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co"># From previous step</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>run_poisson_regression <span class="ot">&lt;-</span> <span class="cf">function</span>(data, formula) {</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glm</span>(formula, data, <span class="at">family =</span> poisson)</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Re-run the Poisson regression, using your function</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> snake_river_visits <span class="sc">%&gt;%</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">run_poisson_regression</span>(n_visits <span class="sc">~</span> gender <span class="sc">+</span> income <span class="sc">+</span> travel)</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Run this to see the predictions</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>snake_river_explanatory <span class="sc">%&gt;%</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">predicted_n_visits =</span> <span class="fu">predict</span>(model, ., <span class="at">type =</span> <span class="st">"response"</span>))<span class="sc">%&gt;%</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(predicted_n_visits))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="numeric-defaults" class="level2" data-number="1.12">
+<h2 data-number="1.12" class="anchored" data-anchor-id="numeric-defaults"><span class="header-section-number">1.12</span> Numeric defaults</h2>
+<p>cut_by_quantile() converts a numeric vector into a categorical variable where quantiles define the cut points. This is a useful function, but at the moment you have to specify five arguments to make it work. This is too much thinking and typing.</p>
+<p>By specifying default arguments, you can make it easier to use. Let’s start with n, which specifies how many categories to cut x into.</p>
+<p>A numeric vector of the number of visits to Snake River is provided as n_visits.</p>
+</section>
+<section id="instructions-100-xp-4" class="level2" data-number="1.13">
+<h2 data-number="1.13" class="anchored" data-anchor-id="instructions-100-xp-4"><span class="header-section-number">1.13</span> Instructions <code>100 XP</code></h2>
+<p>Update the definition of cut_by_quantile() so that the n argument defaults to 5. Remove the n argument from the call to cut_by_quantile().</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>E6.R</strong></pre>
+</div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the default for n to 5</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>cut_by_quantile <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">n=</span><span class="dv">5</span>, na.rm, labels, interval_type) {</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  probs <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">length.out =</span> n <span class="sc">+</span> <span class="dv">1</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  qtiles <span class="ot">&lt;-</span> <span class="fu">quantile</span>(x, probs, <span class="at">na.rm =</span> na.rm, <span class="at">names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  right <span class="ot">&lt;-</span> <span class="cf">switch</span>(interval_type, <span class="st">"(lo, hi]"</span> <span class="ot">=</span> <span class="cn">TRUE</span>, <span class="st">"[lo, hi)"</span> <span class="ot">=</span> <span class="cn">FALSE</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cut</span>(x, qtiles, <span class="at">labels =</span> labels, <span class="at">right =</span> right, <span class="at">include.lowest =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove the n argument from the call</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="fu">cut_by_quantile</span>(</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  n_visits, </span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">na.rm =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"very low"</span>, <span class="st">"low"</span>, <span class="st">"medium"</span>, <span class="st">"high"</span>, <span class="st">"very high"</span>),</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">interval_type =</span> <span class="st">"(lo, hi]"</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="fu">formals</span>(cut_by_quantile)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="logical-defaults" class="level2" data-number="1.14">
+<h2 data-number="1.14" class="anchored" data-anchor-id="logical-defaults"><span class="header-section-number">1.14</span> Logical defaults</h2>
+<p>cut_by_quantile() is now slightly easier to use, but you still always have to specify the na.rm argument. This removes missing values—it behaves the same as the na.rm argument to mean() or sd().</p>
+<p>Where functions have an argument for removing missing values, the best practice is to not remove them by default (in case you hadn’t spotted that you had missing values). That means that the default for na.rm should be FALSE.</p>
+</section>
+<section id="instructions-100-xp-5" class="level2" data-number="1.15">
+<h2 data-number="1.15" class="anchored" data-anchor-id="instructions-100-xp-5"><span class="header-section-number">1.15</span> Instructions <code>100 XP</code></h2>
+<p>Update the definition of cut_by_quantile() so that the na.rm argument defaults to FALSE. Remove the na.rm argument from the call to cut_by_quantile().</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>E7.R</strong></pre>
+</div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the default for na.rm to FALSE</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>cut_by_quantile <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">n =</span> <span class="dv">5</span>, <span class="at">na.rm =</span> <span class="cn">FALSE</span>, labels, interval_type) {</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  probs <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">length.out =</span> n <span class="sc">+</span> <span class="dv">1</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  qtiles <span class="ot">&lt;-</span> <span class="fu">quantile</span>(x, probs, <span class="at">na.rm =</span> na.rm, <span class="at">names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  right <span class="ot">&lt;-</span> <span class="cf">switch</span>(interval_type, <span class="st">"(lo, hi]"</span> <span class="ot">=</span> <span class="cn">TRUE</span>, <span class="st">"[lo, hi)"</span> <span class="ot">=</span> <span class="cn">FALSE</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cut</span>(x, qtiles, <span class="at">labels =</span> labels, <span class="at">right =</span> right, <span class="at">include.lowest =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove the na.rm argument from the call</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="fu">cut_by_quantile</span>(</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  n_visits, </span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"very low"</span>, <span class="st">"low"</span>, <span class="st">"medium"</span>, <span class="st">"high"</span>, <span class="st">"very high"</span>),</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">interval_type =</span> <span class="st">"(lo, hi]"</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="all-about-arguments" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> All About Arguments</h1>
+<section id="null-defaults" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="null-defaults"><span class="header-section-number">2.1</span> NULL defaults</h2>
+<p>The cut() function used by cut_by_quantile() can automatically provide sensible labels for each category. The code to generate these labels is pretty complicated, so rather than appearing in the function signature directly, its labels argument defaults to NULL, and the calculation details are shown on the ?cut help page.</p>
+</section>
+<section id="instructions-100-xp-6" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="instructions-100-xp-6"><span class="header-section-number">2.2</span> Instructions <code>100 XP</code></h2>
+<p>Update the definition of cut_by_quantile() so that the labels argument defaults to NULL. Remove the labels argument from the call to cut_by_quantile().</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>E8.R</strong></pre>
+</div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the default for labels to NULL</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>cut_by_quantile <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">n =</span> <span class="dv">5</span>, <span class="at">na.rm =</span> <span class="cn">FALSE</span>, <span class="at">labels=</span><span class="cn">NULL</span>, </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>interval_type) {</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  probs <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">length.out =</span> n <span class="sc">+</span> <span class="dv">1</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  qtiles <span class="ot">&lt;-</span> <span class="fu">quantile</span>(x, probs, <span class="at">na.rm =</span> na.rm, <span class="at">names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  right <span class="ot">&lt;-</span> <span class="cf">switch</span>(interval_type, <span class="st">"(lo, hi]"</span> <span class="ot">=</span> <span class="cn">TRUE</span>, <span class="st">"[lo, hi)"</span> <span class="ot">=</span> <span class="cn">FALSE</span>)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cut</span>(x, qtiles, <span class="at">labels =</span> labels, <span class="at">right =</span> right, <span class="at">include.lowest =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove the labels argument from the call</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="fu">cut_by_quantile</span>(</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  n_visits,</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">interval_type =</span> <span class="st">"(lo, hi]"</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="categorical-defaults" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="categorical-defaults"><span class="header-section-number">2.3</span> Categorical defaults</h2>
+<p>When cutting up a numeric vector, you need to worry about what happens if a value lands exactly on a boundary. You can either put this value into a category of the lower interval or the higher interval. That is, you can choose your intervals to include values at the top boundary but not the bottom (in mathematical terminology, “open on the left, closed on the right”, or (lo, hi]). Or you can choose the opposite (“closed on the left, open on the right”, or [lo, hi)). cut_by_quantile() should allow these two choices.</p>
+<p>The pattern for categorical defaults is:</p>
+<blockquote class="blockquote">
+<p>function(cat_arg = c(“choice1”, “choice2”)) { cat_arg &lt;- match.arg(cat_arg) }</p>
+</blockquote>
+<p>Free hint: In the console, type head(rank) to see the start of rank()’s definition, and look at the ties.method argument.</p>
+</section>
+<section id="instructions-100-xp-7" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="instructions-100-xp-7"><span class="header-section-number">2.4</span> Instructions <code>100 XP</code></h2>
+<p>Update the signature of cut_by_quantile() so that the interval_type argument can be “(lo, hi]” or “[lo, hi)”. Note the space after each comma. Update the body of cut_by_quantile() to match the interval_type argument. Remove the interval_type argument from the call to cut_by_quantile().</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>E9.R</strong></pre>
+</div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the categories for interval_type to "(lo, hi]" and "[lo, hi)"</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>cut_by_quantile <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">n =</span> <span class="dv">5</span>, <span class="at">na.rm =</span> <span class="cn">FALSE</span>, <span class="at">labels =</span> <span class="cn">NULL</span>, </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="at">interval_type=</span>  <span class="fu">c</span>(<span class="st">"(lo, hi]"</span>, <span class="st">"[lo, hi)"</span>)) {</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Match the interval_type argument</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  interval_type <span class="ot">&lt;-</span> <span class="fu">match.arg</span>(interval_type)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  probs <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">length.out =</span> n <span class="sc">+</span> <span class="dv">1</span>)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  qtiles <span class="ot">&lt;-</span> <span class="fu">quantile</span>(x, probs, <span class="at">na.rm =</span> na.rm, <span class="at">names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  right <span class="ot">&lt;-</span> <span class="cf">switch</span>(interval_type, <span class="st">"(lo, hi]"</span> <span class="ot">=</span> <span class="cn">TRUE</span>, <span class="st">"[lo, hi)"</span> <span class="ot">=</span> <span class="cn">FALSE</span>)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cut</span>(x, qtiles, <span class="at">labels =</span> labels, <span class="at">right =</span> right, <span class="at">include.lowest =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove the interval_type argument from the call</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="fu">cut_by_quantile</span>(n_visits)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="harmonic-mean" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="harmonic-mean"><span class="header-section-number">2.5</span> Harmonic mean</h2>
+<p>The harmonic mean is the reciprocal of the arithmetic mean of the reciprocal of the data. That is</p>
+<p>The harmonic mean is often used to average ratio data. You’ll be using it on the price/earnings ratio of stocks in the Standard and Poor’s 500 index, provided as std_and_poor500. Price/earnings ratio is a measure of how expensive a stock is.</p>
+<p>The dplyr package is loaded.</p>
+</section>
+<section id="instructions-100-xp-8" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="instructions-100-xp-8"><span class="header-section-number">2.6</span> Instructions <code>100 XP</code></h2>
+<ul>
+<li><p>Look at std_and_poor500 (you’ll need this later). Write a function, get_reciprocal, to get the reciprocal of an input x. Its only argument should be x, and it should return one over x.</p></li>
+<li><p>Write a function, calc_harmonic_mean(), that calculates the harmonic mean of its only input, x.</p></li>
+<li><p>Using std_and_poor500, group by sector, and summarize to calculate the harmonic mean of the price/earning ratios in the pe_ratio column.</p></li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>E10.R</strong></pre>
+</div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Look at the Standard and Poor 500 data</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(std_and_poor500)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Write a function to calculate the reciprocal</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>get_reciprocal <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span><span class="sc">/</span>x </span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co"># From previous step</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>get_reciprocal <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span> <span class="sc">/</span> x</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Write a function to calculate the harmonic mean</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>calc_harmonic_mean <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">%&gt;%</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">get_reciprocal</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mean</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">get_reciprocal</span>()</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a><span class="co"># From previous steps</span></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>get_reciprocal <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span> <span class="sc">/</span> x</span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>calc_harmonic_mean <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">%&gt;%</span></span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">get_reciprocal</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mean</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">get_reciprocal</span>()</span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>std_and_poor500 <span class="sc">%&gt;%</span> </span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Group by sector</span></span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sector) <span class="sc">%&gt;%</span> </span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Summarize, calculating harmonic mean of P/E ratio</span></span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">hmean_pe_ratio =</span> <span class="fu">calc_harmonic_mean</span>(pe_ratio))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="dealing-with-missing-values" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="dealing-with-missing-values"><span class="header-section-number">2.7</span> Dealing with missing values</h2>
+<p>In the last exercise, many sectors had an NA value for the harmonic mean. It would be useful for your function to be able to remove missing values before calculating.</p>
+<p>Rather than writing your own code for this, you can outsource this functionality to mean().</p>
+<p>The dplyr package is loaded.</p>
+</section>
+<section id="instructions-100-xp-9" class="level2" data-number="2.8">
+<h2 data-number="2.8" class="anchored" data-anchor-id="instructions-100-xp-9"><span class="header-section-number">2.8</span> Instructions <code>100 XP</code></h2>
+<ul>
+<li><p>Modify the signature and body of calc_harmonic_mean() so it has an na.rm argument, defaulting to false, that gets passed to mean().</p></li>
+<li><p>Using std_and_poor500, group by sector, and summarize to calculate the harmonic mean of the price/earning ratios in the pe_ratio column, removing missing values.</p></li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>E11.R</strong></pre>
+</div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add an na.rm arg with a default, and pass it to mean()</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>calc_harmonic_mean <span class="ot">&lt;-</span> <span class="cf">function</span>(x,<span class="at">na.rm =</span> <span class="cn">FALSE</span>) {</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">%&gt;%</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">get_reciprocal</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mean</span>(<span class="at">na.rm =</span>na.rm) <span class="sc">%&gt;%</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">get_reciprocal</span>()</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co"># From previous step</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>calc_harmonic_mean <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">na.rm =</span> <span class="cn">FALSE</span>) {</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">%&gt;%</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">get_reciprocal</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mean</span>(<span class="at">na.rm =</span> na.rm) <span class="sc">%&gt;%</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">get_reciprocal</span>()</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>std_and_poor500 <span class="sc">%&gt;%</span> </span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Group by sector</span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sector) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Summarize, calculating harmonic mean of P/E ratio</span></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">hmean_pe_ratio =</span> <span class="fu">calc_harmonic_mean</span>(pe_ratio,</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>   <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="passing-arguments-with" class="level2" data-number="2.9">
+<h2 data-number="2.9" class="anchored" data-anchor-id="passing-arguments-with"><span class="header-section-number">2.9</span> Passing arguments with …</h2>
+<p>Rather than explicitly giving calc_harmonic_mean() and na.rm argument, you can use … to simply “pass other arguments” to mean().</p>
+<p>The dplyr package is loaded.</p>
+</section>
+<section id="instructions-100-xp-10" class="level2" data-number="2.10">
+<h2 data-number="2.10" class="anchored" data-anchor-id="instructions-100-xp-10"><span class="header-section-number">2.10</span> Instructions <code>100 XP</code></h2>
+<ul>
+<li><p>Replace the na.rm argument with … in the signature and body of calc_harmonic_mean().</p></li>
+<li><p>Using std_and_poor500, group by sector, and summarize to calculate the harmonic mean of the price/earning ratios in the pe_ratio column, removing missing values.</p></li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>E12.R</strong></pre>
+</div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Swap na.rm arg for ... in signature and body</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>calc_harmonic_mean <span class="ot">&lt;-</span> <span class="cf">function</span>(x, ...) {</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">%&gt;%</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">get_reciprocal</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mean</span>(...) <span class="sc">%&gt;%</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">get_reciprocal</span>()</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="fu">calc_harmonic_mean</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="cn">NA</span>, <span class="dv">3</span>, <span class="cn">NA</span>, <span class="dv">5</span>))</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>calc_harmonic_mean <span class="ot">&lt;-</span> <span class="cf">function</span>(x, ...) {</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">%&gt;%</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">get_reciprocal</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mean</span>(...) <span class="sc">%&gt;%</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">get_reciprocal</span>()</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>std_and_poor500 <span class="sc">%&gt;%</span> </span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Group by sector</span></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sector) <span class="sc">%&gt;%</span> </span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Summarize, calculating harmonic mean of P/E ratio</span></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">hmean_pe_ratio =</span> <span class="fu">calc_harmonic_mean</span>(pe_ratio,</span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>   <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="throwing-errors-with-bad-arguments" class="level2" data-number="2.11">
+<h2 data-number="2.11" class="anchored" data-anchor-id="throwing-errors-with-bad-arguments"><span class="header-section-number">2.11</span> Throwing errors with bad arguments</h2>
+<p>If a user provides a bad input to a function, the best course of action is to throw an error letting them know. The two rules are</p>
+<p>Throw the error message as soon as you realize there is a problem (typically at the start of the function). Make the error message easily understandable. You can use the assert_*() functions from assertive to check inputs and throw errors when they fail.</p>
+</section>
+<section id="instructions-100-xp-11" class="level2" data-number="2.12">
+<h2 data-number="2.12" class="anchored" data-anchor-id="instructions-100-xp-11"><span class="header-section-number">2.12</span> Instructions <code>100 XP</code></h2>
+<ul>
+<li>Add a line to the body of calc_harmonic_mean() to assert that x is numeric.</li>
+<li>Look at what happens when you pass a character argument to calc_harmonic_mean().</li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>E13.R</strong></pre>
+</div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>alc_harmonic_mean <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">na.rm =</span> <span class="cn">FALSE</span>) {</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Assert that x is numeric</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">assert_is_numeric</span>(x)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">%&gt;%</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">get_reciprocal</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mean</span>(<span class="at">na.rm =</span> na.rm) <span class="sc">%&gt;%</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">get_reciprocal</span>()</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="co"># See what happens when you pass it strings</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="fu">calc_harmonic_mean</span>(std_and_poor500<span class="sc">$</span>sector)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="custom-error-logic" class="level2" data-number="2.13">
+<h2 data-number="2.13" class="anchored" data-anchor-id="custom-error-logic"><span class="header-section-number">2.13</span> Custom error logic</h2>
+<p>Sometimes the <code>assert_*()</code> functions in assertive don’t give the most informative error message. For example, the assertions that check if a number is in a numeric range will tell the user that a value is out of range, but the won’t say why that’s a problem. In that case, you can use the is_*() functions in conjunction with messages, warnings, or errors to define custom feedback.</p>
+<p>The harmonic mean only makes sense when x has all positive values. (Try calculating the harmonic mean of one and minus one to see why.) Make sure your users know this!</p>
+</section>
+<section id="instructions-100-xp-12" class="level2" data-number="2.14">
+<h2 data-number="2.14" class="anchored" data-anchor-id="instructions-100-xp-12"><span class="header-section-number">2.14</span> Instructions <code>100 XP</code></h2>
+<ul>
+<li>If any values of x are non-positive (ignoring NAs) then throw an error.</li>
+<li>Look at what happens when you pass a character argument to calc_harmonic_mean().</li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>E14.R</strong></pre>
+</div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>calc_harmonic_mean <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">na.rm =</span> <span class="cn">FALSE</span>) {</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">assert_is_numeric</span>(x)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Check if any values of x are non-positive</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">any</span>(<span class="fu">is_non_positive</span>(x), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Throw an error</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">"x contains non-positive values, so the harmonic mean makes no sense."</span>)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">%&gt;%</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">get_reciprocal</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mean</span>(<span class="at">na.rm =</span> na.rm) <span class="sc">%&gt;%</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">get_reciprocal</span>()</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="co"># See what happens when you pass it negative numbers</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="fu">calc_harmonic_mean</span>(std_and_poor500<span class="sc">$</span>pe_ratio <span class="sc">-</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="fixing-function-arguments" class="level2" data-number="2.15">
+<h2 data-number="2.15" class="anchored" data-anchor-id="fixing-function-arguments"><span class="header-section-number">2.15</span> Fixing function arguments</h2>
+<p>The harmonic mean function is almost complete. However, you still need to provide some checks on the na.rm argument. This time, rather than throwing errors when the input is in an incorrect form, you are going to try to fix it.</p>
+<p>na.rm should be a logical vector with one element (that is, TRUE, or FALSE).</p>
+<p>The assertive package is loaded for you.</p>
+<p>Instructions <code>100 XP</code></p>
+<ul>
+<li>Update calc_harmonic_mean() to fix the na.rm argument by using use_first() to select the * first na.rm element, and coerce_to() to change it to logical.</li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>E15.R</strong></pre>
+</div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Update the function definition to fix the na.rm argument</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>calc_harmonic_mean <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">na.rm =</span> <span class="cn">FALSE</span>) {</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">assert_is_numeric</span>(x)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">any</span>(<span class="fu">is_non_positive</span>(x), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">"x contains non-positive values, so the harmonic mean makes no sense."</span>)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Use the first value of na.rm, and coerce to logical</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  na.rm <span class="ot">&lt;-</span> <span class="fu">coerce_to</span>(<span class="fu">use_first</span>(na.rm), <span class="at">target_class  =</span> <span class="st">"logical"</span>)</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">%&gt;%</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">get_reciprocal</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mean</span>(<span class="at">na.rm =</span> na.rm) <span class="sc">%&gt;%</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">get_reciprocal</span>()</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="co"># See what happens when you pass it malformed na.rm</span></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a><span class="fu">calc_harmonic_mean</span>(std_and_poor500<span class="sc">$</span>pe_ratio, <span class="at">na.rm =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="return-values-and-scope" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Return Values and Scope</h1>
+<section id="returning-early" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="returning-early"><span class="header-section-number">3.1</span> Returning early</h2>
+<p>Sometimes, you don’t need to run through the whole body of a function to get the answer. In that case you can return early from that function using return().</p>
+<p>To check if x is divisible by n, you can use is_divisible_by(x, n) from assertive.</p>
+<p>Alternatively, use the modulo operator, %%. x %% n gives the remainder when dividing x by n, so x %% n == 0 determines whether x is divisible by n.&nbsp;Try 1:10 %% 3 == 0 in the console.</p>
+<p>To solve this exercise, you need to know that a leap year is every 400th year (like the year 2000) or every 4th year that isn’t a century (like 1904 but not 1900 or 1905).</p>
+<p>assertive is loaded.</p>
+</section>
+<section id="instructions-100-xp-13" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="instructions-100-xp-13"><span class="header-section-number">3.2</span> Instructions <code>100 XP</code></h2>
+<p>Complete the definition of is_leap_year(), checking for the cases of year being divisible by 400, then 100, then 4, returning early from the function in each case.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>E16.R</strong></pre>
+</div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>is_leap_year <span class="ot">&lt;-</span> <span class="cf">function</span>(year) {</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># If year is div. by 400 return TRUE</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">is_divisible_by</span>(year,<span class="dv">400</span>)) {</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="cn">TRUE</span>)</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># If year is div. by 100 return FALSE</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">is_divisible_by</span>(year,<span class="dv">100</span>)) {</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="cn">FALSE</span>)</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  }  </span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># If year is div. by 4 return TRUE</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">is_divisible_by</span>(year,<span class="dv">4</span>)) {</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="cn">TRUE</span>)</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Otherwise return FALSE</span></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>  <span class="cn">FALSE</span></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="returning-invisibly" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="returning-invisibly"><span class="header-section-number">3.3</span> Returning invisibly</h2>
+<p>When the main purpose of a function is to generate output, like drawing a plot or printing something in the console, you may not want a return value to be rinted as well. In that case, the value should be invisibly returned.</p>
+<p>The base R plot function returns NULL, since its main purpose is to draw a plot. This isn’t helpful if you want to use it in piped code: instead it should invisibly return the plot data to be piped on to the next step.</p>
+<p>Recall that plot() has a formula interface: instead of giving it vectors for x and y, you can specify a formula describing which columns of a data frame go on the x and y axes, and a data argument for the data frame. Note that just like lm(), the arguments are the wrong way round because the detail argument, formula, comes before the data argument.</p>
+<blockquote class="blockquote">
+<p>plot(y ~ x, data = data)</p>
+</blockquote>
+</section>
+<section id="instructions-100-xp-14" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="instructions-100-xp-14"><span class="header-section-number">3.4</span> Instructions <code>100 XP</code></h2>
+<ul>
+<li><p>Use the cars dataset and the formula interface to plot(), draw a scatter plot of dist versus speed.</p></li>
+<li><p>Give pipeable_plot() data and formula arguments (in that order) and make it draw the plot, then invisibly return data.</p></li>
+<li><p>Draw the scatter plot of dist vs.&nbsp;speed again by calling pipeable_plot()</p></li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>E17.R</strong></pre>
+</div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using cars, draw a scatter plot of dist vs. speed</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>plt_dist_vs_speed <span class="ot">&lt;-</span> <span class="fu">plot</span>(dist <span class="sc">~</span> speed, <span class="at">data =</span> cars)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Oh no! The plot object is NULL</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>plt_dist_vs_speed</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a pipeable plot fn with data and formula args</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>pipeable_plot <span class="ot">&lt;-</span> <span class="cf">function</span>(data, formula) {</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Call plot() with the formula interface</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(formula, data)</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Invisibly return the input dataset</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">invisible</span>(data)</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Draw the scatter plot of dist vs. speed again</span></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>plt_dist_vs_speed <span class="ot">&lt;-</span> cars <span class="sc">%&gt;%</span> </span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pipeable_plot</span>(dist <span class="sc">~</span> speed)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="returning-many-things" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="returning-many-things"><span class="header-section-number">3.5</span> Returning many things</h2>
+<p>Functions can only return one value. If you want to return multiple things, then you can store them all in a list.</p>
+<p>If users want to have the list items as separate variables, they can assign each list element to its own variable using zeallot’s multi-assignment operator, %&lt;-%.</p>
+<p>glance(), tidy(), and augment() each take the model object as their only argument.</p>
+<p>The Poisson regression model of Snake River visits is available as model. broom and zeallot are loaded.</p>
+</section>
+<section id="instructions-100-xp-15" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="instructions-100-xp-15"><span class="header-section-number">3.6</span> Instructions <code>100 XP</code></h2>
+<ul>
+<li><p>Examine the structure of model.</p></li>
+<li><p>Use broom functions on model to create a list containing the model-, coefficient-, and observation-level parts of model.</p></li>
+<li><p>Wrap the code into a function, groom_model(), that accepts model as its only argument.</p></li>
+<li><p>Call groom_model() on model, multi-assigning the result to three variables at once: mdl, cff, and obs.</p></li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>E18.R</strong></pre>
+</div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Look at the structure of model (it's a mess!)</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(model)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Use broom tools to get a list of 3 data frames</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Get model-level values</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">model =</span> <span class="fu">glance</span>(model),</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Get coefficient-level values</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">coefficients =</span> <span class="fu">tidy</span>(model),</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Get observation-level values</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">observations =</span> <span class="fu">augment</span>(model)</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Wrap this code into a function, groom_model</span></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>groom_model <span class="ot">&lt;-</span> <span class="cf">function</span>(model){</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">model =</span> <span class="fu">glance</span>(model),</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">coefficients =</span> <span class="fu">tidy</span>(model),</span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">observations =</span> <span class="fu">augment</span>(model)</span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a><span class="fu">groom_model</span>(model)</span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a><span class="co"># From previous step</span></span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a>groom_model <span class="ot">&lt;-</span> <span class="cf">function</span>(model) {</span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(</span>
+<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">model =</span> <span class="fu">glance</span>(model),</span>
+<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">coefficients =</span> <span class="fu">tidy</span>(model),</span>
+<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">observations =</span> <span class="fu">augment</span>(model)</span>
+<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb18-32"><a href="#cb18-32" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb18-33"><a href="#cb18-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-34"><a href="#cb18-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Call groom_model on model, assigning to 3 variables</span></span>
+<span id="cb18-35"><a href="#cb18-35" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(mdl, cff, obs) <span class="sc">%&lt;-%</span> <span class="fu">groom_model</span>(model)</span>
+<span id="cb18-36"><a href="#cb18-36" aria-hidden="true" tabindex="-1"></a><span class="co">#c(var1, var2, var3) %&lt;-% fn(args)</span></span>
+<span id="cb18-37"><a href="#cb18-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-38"><a href="#cb18-38" aria-hidden="true" tabindex="-1"></a><span class="co"># See these individual variables</span></span>
+<span id="cb18-39"><a href="#cb18-39" aria-hidden="true" tabindex="-1"></a>mdl; cff; obs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="returning-metadata" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="returning-metadata"><span class="header-section-number">3.7</span> Returning metadata</h2>
+<p>Sometimes you want to return multiple things from a function, but you want the result to have a particular class (for example, a data frame or a numeric vector), so returning a list isn’t appropriate. This is common when you have a result plus metadata about the result. (Metadata is “data about the data”. For example, it could be the file a dataset was loaded from, or the username of the person who created the variable, or the number of iterations for an algorithm to converge.)</p>
+<p>In that case, you can store the metadata in attributes. Recall the syntax for assigning attributes is as follows.</p>
+<blockquote class="blockquote">
+<p>attr(object, “attribute_name”) &lt;- attribute_value</p>
+</blockquote>
+<p>Instructions <code>100 XP</code></p>
+<ul>
+<li><p>Update pipeable_plot() so the result has an attribute named “formula” with the value of formula.</p></li>
+<li><p>plt_dist_vs_speed, that you previously created, is shown. Examine its updated structure.</p></li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>E19.R</strong></pre>
+</div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>pipeable_plot <span class="ot">&lt;-</span> <span class="cf">function</span>(data, formula) {</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(formula, data)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add a "formula" attribute to data</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">attr</span>(data, <span class="st">"formula"</span>) <span class="ot">&lt;-</span> formula</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">invisible</span>(data)</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="co"># From previous exercise</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>plt_dist_vs_speed <span class="ot">&lt;-</span> cars <span class="sc">%&gt;%</span> </span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pipeable_plot</span>(dist <span class="sc">~</span> speed)</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Examine the structure of the result</span></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(plt_dist_vs_speed)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="creating-and-exploring-environments" class="level2" data-number="3.8">
+<h2 data-number="3.8" class="anchored" data-anchor-id="creating-and-exploring-environments"><span class="header-section-number">3.8</span> Creating and exploring environments</h2>
+<p>Environments are used to store other variables. Mostly, you can think of them as lists, but there’s an important extra property that is relevant to writing functions. Every environment has a parent environment (except the empty environment, at the root of the environment tree). This determines which variables R know about at different places in your code.</p>
+<p>Facts about the Republic of South Africa are contained in capitals, national_parks, and population.</p>
+</section>
+<section id="instructions-100-xp-16" class="level2" data-number="3.9">
+<h2 data-number="3.9" class="anchored" data-anchor-id="instructions-100-xp-16"><span class="header-section-number">3.9</span> Instructions <code>100 XP</code></h2>
+<ul>
+<li><p>Create rsa_lst, a named list from capitals, national_parks, and population. Use those values as the names.</p></li>
+<li><p>List the structure of each element of rsa_lst using ls.str().</p></li>
+<li><p>Convert the list to an environment, rsa_env, using list2env().</p></li>
+<li><p>List the structure of each element of rsa_env</p></li>
+<li><p>Find the parent environment of rsa_env and print its name.</p></li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>E20.R</strong></pre>
+</div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add capitals, national_parks, &amp; population to a named list</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>rsa_lst <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">capitals =</span> capitals,</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">national_parks =</span> national_parks,</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">population =</span> population</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="co"># List the structure of each element of rsa_lst</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ls.str</span>(rsa_lst)</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="co"># From previous step</span></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>rsa_lst <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">capitals =</span> capitals,</span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">national_parks =</span> national_parks,</span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">population =</span> population</span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert the list to an environment</span></span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>rsa_env <span class="ot">&lt;-</span> <span class="fu">list2env</span>(rsa_lst)</span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a><span class="co"># List the structure of each variable</span></span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a><span class="fu">ls.str</span>(rsa_env)</span>
+<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a><span class="co"># From previous steps</span></span>
+<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a>rsa_lst <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">capitals =</span> capitals,</span>
+<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a>  <span class="at">national_parks =</span> national_parks,</span>
+<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a>  <span class="at">population =</span> population</span>
+<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a>rsa_env <span class="ot">&lt;-</span> <span class="fu">list2env</span>(rsa_lst)</span>
+<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-32"><a href="#cb20-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the parent environment of rsa_env</span></span>
+<span id="cb20-33"><a href="#cb20-33" aria-hidden="true" tabindex="-1"></a>parent <span class="ot">&lt;-</span> <span class="fu">parent.env</span>(rsa_env)</span>
+<span id="cb20-34"><a href="#cb20-34" aria-hidden="true" tabindex="-1"></a><span class="fu">environmentName</span>(parent)</span>
+<span id="cb20-35"><a href="#cb20-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-36"><a href="#cb20-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Print its name</span></span>
+<span id="cb20-37"><a href="#cb20-37" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(environmentName)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="do-variables-exist" class="level2" data-number="3.10">
+<h2 data-number="3.10" class="anchored" data-anchor-id="do-variables-exist"><span class="header-section-number">3.10</span> Do variables exist?</h2>
+<p>If R cannot find a variable in the current environment, it will look in the parent environment, then the grandparent environment, and so on until it finds it.</p>
+<p>rsa_env has been modified so it includes capitals and national_parks, but not population.</p>
+</section>
+<section id="instructions-100-xp-17" class="level2" data-number="3.11">
+<h2 data-number="3.11" class="anchored" data-anchor-id="instructions-100-xp-17"><span class="header-section-number">3.11</span> Instructions <code>100 XP</code></h2>
+<ul>
+<li>Check if population exists in rsa_env, using default inheritance rules.</li>
+<li>Check if population exists in rsa_env, ignoring inheritance.</li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>E21.R</strong></pre>
+</div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compare the contents of the global environment and rsa_env</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls.str</span>(<span class="fu">globalenv</span>())</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ls.str</span>(rsa_env)</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Does population exist in rsa_env?</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="fu">exists</span>(<span class="st">"population"</span>, <span class="at">envir =</span> rsa_env)</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Does population exist in rsa_env, ignoring inheritance?</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="fu">exists</span>(<span class="st">"population"</span>, <span class="at">envir =</span> rsa_env,<span class="at">inherits =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="variable-precedence-1" class="level2" data-number="3.12">
+<h2 data-number="3.12" class="anchored" data-anchor-id="variable-precedence-1"><span class="header-section-number">3.12</span> Variable precedence 1</h2>
+<p>Consider this code, run in a fresh R session.</p>
+<blockquote class="blockquote">
+<p>x_plus_y &lt;- function(x) { y &lt;- 3 x + y } y &lt;- 7</p>
+</blockquote>
+<p>If you now call x_plus_y(5), what is the result?</p>
+</section>
+<section id="answer-the-question-50xp-1" class="level2" data-number="3.13">
+<h2 data-number="3.13" class="anchored" data-anchor-id="answer-the-question-50xp-1"><span class="header-section-number">3.13</span> Answer the question <code>50XP</code></h2>
+<p>Possible Answers</p>
+<ol start="8" type="1">
+<li><p>Respuesta</p></li>
+<li></li>
+<li></li>
+</ol>
+<p>An error is thrown.</p>
+</section>
+<section id="variable-precedence-2" class="level2" data-number="3.14">
+<h2 data-number="3.14" class="anchored" data-anchor-id="variable-precedence-2"><span class="header-section-number">3.14</span> Variable precedence 2</h2>
+<p>Consider this (slightly different) code, run in a fresh R session.</p>
+<p>x_plus_y &lt;- function(x) { x &lt;- 6 y &lt;- 3 x + y } y &lt;- 7 If you now call x_plus_y(5), what is the result?</p>
+</section>
+<section id="answer-the-question-50xp-2" class="level2" data-number="3.15">
+<h2 data-number="3.15" class="anchored" data-anchor-id="answer-the-question-50xp-2"><span class="header-section-number">3.15</span> Answer the question <code>50XP</code></h2>
+<p>Possible Answers</p>
+<ol start="8" type="1">
+<li></li>
+<li><p>respuesta</p></li>
+<li></li>
+<li><p>An error is thrown.</p></li>
+</ol>
+</section>
+</section>
+<section id="case-study-on-grain-yields" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Case Study on Grain Yields</h1>
+<section id="converting-areas-to-metric-1" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="converting-areas-to-metric-1"><span class="header-section-number">4.1</span> Converting areas to metric 1</h2>
+<p>In this chapter, you’ll be working with grain yield data from the United States Department of Agriculture, National Agricultural Statistics Service. Unfortunately, they report all areas in acres. So, the first thing you need to do is write some utility functions to convert areas in acres to areas in hectares.</p>
+<p>To solve this exercise, you need to know the following:</p>
+<p>There are 4840 square yards in an acre. There are 36 inches in a yard and one inch is 0.0254 meters. There are 10000 square meters in a hectare.</p>
+</section>
+<section id="instructions-100-xp-18" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="instructions-100-xp-18"><span class="header-section-number">4.2</span> Instructions <code>100 XP</code></h2>
+<ul>
+<li><p>Write a function, acres_to_sq_yards(), to convert areas in acres to areas in square yards. This should take a single argument, acres.</p></li>
+<li><p>Write a function, yards_to_meters(), to convert distances in yards to distances in meters. This should take a single argument, yards.</p></li>
+<li><p>Write a function, sq_meters_to_hectares(), to convert areas in square meters to areas in hectares. This should take a single argument, sq_meters.</p></li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>E22.R</strong></pre>
+</div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Write a function to convert acres to sq. yards</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>acres_to_sq_yards <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">*</span> <span class="dv">4840</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Write a function to convert yards to meters</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>yards_to_meters <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">*</span> <span class="dv">36</span><span class="sc">*</span><span class="fl">0.0254</span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Write a function to convert sq. meters to hectares</span></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>sq_meters_to_hectares <span class="ot">&lt;-</span> <span class="cf">function</span>(sq_meters) {</span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>  (sq_meters)<span class="sc">/</span><span class="dv">10000</span></span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="converting-areas-to-metric-2" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="converting-areas-to-metric-2"><span class="header-section-number">4.3</span> Converting areas to metric 2</h2>
+<p>You’re almost there with creating a function to convert acres to hectares. You need another utility function to deal with getting from square yards to square meters. Then, you can bring everything together to write the overall acres-to-hectares conversion function. Finally, in the next exercise you’ll be calculating area conversions in the denominator of a ratio, so you’ll need a harmonic acre-to-hectare conversion function.</p>
+<p>Free hints: magrittr’s raise_to_power() will be useful here. The last step is similar to Chapter 2’s Harmonic Mean.</p>
+<p>The three utility functions from the last exercise (acres_to_sq_yards(), yards_to_meters(), and sq_meters_to_hectares()) are available, as is your get_reciprocal() from Chapter 2. magrittr is loaded.</p>
+</section>
+<section id="instructions-100-xp-19" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="instructions-100-xp-19"><span class="header-section-number">4.4</span> Instructions <code>100 XP</code></h2>
+<ul>
+<li><p>Write a function to convert distance in square yards to square meters. It should take the square root of the input, then convert yards to meters, then square the result.</p></li>
+<li><p>Write a function to convert areas in acres to hectares. The function should convert the input from acres to square yards, then to square meters, then to hectares.</p></li>
+<li><p>Write a function to harmonically convert areas in acres to hectares. The function should get the reciprocal of the input, then convert from acres to hectares, then get the reciprocal again.</p></li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>E23.R</strong></pre>
+</div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Write a function to convert sq. yards to sq. meters</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>sq_yards_to_sq_meters <span class="ot">&lt;-</span> <span class="cf">function</span>(sq_yards) {</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  sq_yards <span class="sc">%&gt;%</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Take the square root</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sqrt</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Convert yards to meters</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">yards_to_meters</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Square it</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">raise_to_power</span>(<span class="dv">2</span>)</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>     }</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>     </span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the function from the previous step</span></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a><span class="fu">load_step2</span>()</span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Write a function to convert acres to hectares</span></span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>acres_to_hectares <span class="ot">&lt;-</span> <span class="cf">function</span>(acres) {</span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>  acres <span class="sc">%&gt;%</span></span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Convert acres to sq yards</span></span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">acres_to_sq_yards</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Convert sq yards to sq meters</span></span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sq_yards_to_sq_meters</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Convert sq meters to hectares</span></span>
+<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sq_meters_to_hectares</span>()</span>
+<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the functions from the previous steps</span></span>
+<span id="cb23-27"><a href="#cb23-27" aria-hidden="true" tabindex="-1"></a><span class="fu">load_step3</span>()</span>
+<span id="cb23-28"><a href="#cb23-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-29"><a href="#cb23-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a harmonic acres to hectares function</span></span>
+<span id="cb23-30"><a href="#cb23-30" aria-hidden="true" tabindex="-1"></a>harmonic_acres_to_hectares <span class="ot">&lt;-</span> <span class="cf">function</span>(acres) {</span>
+<span id="cb23-31"><a href="#cb23-31" aria-hidden="true" tabindex="-1"></a>  acres <span class="sc">%&gt;%</span> </span>
+<span id="cb23-32"><a href="#cb23-32" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Get the reciprocal</span></span>
+<span id="cb23-33"><a href="#cb23-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">get_reciprocal</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb23-34"><a href="#cb23-34" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Convert acres to hectares</span></span>
+<span id="cb23-35"><a href="#cb23-35" aria-hidden="true" tabindex="-1"></a>    <span class="fu">acres_to_hectares</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb23-36"><a href="#cb23-36" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Get the reciprocal again</span></span>
+<span id="cb23-37"><a href="#cb23-37" aria-hidden="true" tabindex="-1"></a>    <span class="fu">get_reciprocal</span>()</span>
+<span id="cb23-38"><a href="#cb23-38" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="converting-yields-to-metric" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="converting-yields-to-metric"><span class="header-section-number">4.5</span> Converting yields to metric</h2>
+<p>The yields in the NASS corn data are also given in US units, namely bushels per acre. You’ll need to write some more utility functions to convert this unit to the metric unit of kg per hectare.</p>
+<p>Bushels historically meant a volume of 8 gallons, but in the context of grain, they are now defined as masses. This mass differs for each grain! To solve this exercise, you need to know these facts.</p>
+<p>One pound (lb) is 0.45359237 kilograms (kg). One bushel is 48 lbs of barley, 56 lbs of corn, or 60 lbs of wheat. magrittr is loaded.</p>
+</section>
+<section id="instructions-100-xp-20" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="instructions-100-xp-20"><span class="header-section-number">4.6</span> Instructions <code>100 XP</code></h2>
+<ul>
+<li><p>Write a function to convert masses in lb to kg. This should take a single argument, lbs.</p></li>
+<li><p>Write a function to convert masses in bushels to lbs. This should take two arguments, bushels and crop. It should define a lookup vector of scale factors for each crop (barley, corn, wheat), extract the scale factor for the crop, then multiply this by the number of bushels.</p></li>
+<li><p>Write a function to convert masses in bushels to kgs. This should take two arguments, bushels and crop. It should convert the mass in bushels to lbs then to kgs.</p></li>
+<li><p>Write a function to convert yields in bushels/acre to kg/ha. The arguments should be bushels_per_acre and crop. Three choices of crop should be allowed: “barley”, “corn”, and “wheat”. It should match the crop argument, then convert bushels to kgs, then convert harmonic acres to hectares.</p></li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>E24.R</strong></pre>
+</div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Write a function to convert lb to kg</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>lbs_to_kgs <span class="ot">&lt;-</span> <span class="cf">function</span>(lbs) {lbs <span class="sc">*</span> <span class="fl">0.45359237</span>}</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Write a function to convert bushels to lbs</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>bushels_to_lbs <span class="ot">&lt;-</span> <span class="cf">function</span>(bushels, crop) {</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Define a lookup table of scale factors</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="at">barley =</span> <span class="dv">48</span>, <span class="at">corn =</span> <span class="dv">56</span>, <span class="at">wheat =</span> <span class="dv">60</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Extract the value for the crop</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">extract</span>(crop) <span class="sc">%&gt;%</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Multiply by the no. of bushels</span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">multiply_by</span>(bushels)</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Load fns defined in previous steps</span></span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a><span class="fu">load_step3</span>()</span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Write a function to convert bushels to kg</span></span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>bushels_to_kgs <span class="ot">&lt;-</span> <span class="cf">function</span>(bushels, crop) {</span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>  bushels <span class="sc">%&gt;%</span></span>
+<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Convert bushels to lbs for this crop</span></span>
+<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">bushels_to_lbs</span>(crop) <span class="sc">%&gt;%</span></span>
+<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Convert lbs to kgs</span></span>
+<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lbs_to_kgs</span>()</span>
+<span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb24-25"><a href="#cb24-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-26"><a href="#cb24-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Load fns defined in previous steps</span></span>
+<span id="cb24-27"><a href="#cb24-27" aria-hidden="true" tabindex="-1"></a><span class="fu">load_step4</span>()</span>
+<span id="cb24-28"><a href="#cb24-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-29"><a href="#cb24-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Write a function to convert bushels/acre to kg/ha</span></span>
+<span id="cb24-30"><a href="#cb24-30" aria-hidden="true" tabindex="-1"></a>bushels_per_acre_to_kgs_per_hectare <span class="ot">&lt;-</span> <span class="cf">function</span>(bushels_per_acre, </span>
+<span id="cb24-31"><a href="#cb24-31" aria-hidden="true" tabindex="-1"></a><span class="at">crop =</span> <span class="fu">c</span>(<span class="st">"barley"</span>, <span class="st">"corn"</span>, <span class="st">"wheat"</span>)) {</span>
+<span id="cb24-32"><a href="#cb24-32" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Match the crop argument</span></span>
+<span id="cb24-33"><a href="#cb24-33" aria-hidden="true" tabindex="-1"></a>  crop <span class="ot">&lt;-</span> <span class="fu">match.arg</span>(crop)</span>
+<span id="cb24-34"><a href="#cb24-34" aria-hidden="true" tabindex="-1"></a>  bushels_per_acre <span class="sc">%&gt;%</span></span>
+<span id="cb24-35"><a href="#cb24-35" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Convert bushels to kgs for this crop</span></span>
+<span id="cb24-36"><a href="#cb24-36" aria-hidden="true" tabindex="-1"></a>    <span class="fu">bushels_to_kgs</span>(crop) <span class="sc">%&gt;%</span></span>
+<span id="cb24-37"><a href="#cb24-37" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Convert harmonic acres to ha</span></span>
+<span id="cb24-38"><a href="#cb24-38" aria-hidden="true" tabindex="-1"></a>    <span class="fu">harmonic_acres_to_hectares</span>()</span>
+<span id="cb24-39"><a href="#cb24-39" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="applying-the-unit-conversion" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="applying-the-unit-conversion"><span class="header-section-number">4.7</span> Applying the unit conversion</h2>
+<p>Now that you’ve written some functions, it’s time to apply them! The NASS corn dataset is available, and you can fortify it (jargon for “adding new columns”) with metrics areas and yields.</p>
+<p>This fortification process can also be turned into a function, so you’ll define a function for this, and test it on the NASS wheat dataset.</p>
+</section>
+<section id="instructions-100-xp-21" class="level2" data-number="4.8">
+<h2 data-number="4.8" class="anchored" data-anchor-id="instructions-100-xp-21"><span class="header-section-number">4.8</span> Instructions <code>100 XP</code></h2>
+<ul>
+<li><p>Look at the corn dataset. Add two columns: farmed_area_ha should be farmed_area_acres converted to hectares; yield_kg_per_ha should be yield_bushels_per_acre converted to kilograms per hectare.</p></li>
+<li><p>Wrap the mutation code into a function called fortify_with_metric_units that takes two arguments, data and crop with no defaults. (In the function body, swap corn for the data argument and pass the function’s local crop variable to the crop argument.)</p></li>
+<li><p>Use fortify_with_metric_units() on the wheat dataset.</p></li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>E25.R</strong></pre>
+</div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View the corn dataset</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(corn)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>corn <span class="sc">%&gt;%</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add some columns</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Convert farmed area from acres to ha</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">farmed_area_ha =</span> <span class="fu">acres_to_hectares</span>(farmed_area_acres),</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Convert yield from bushels/acre to kg/ha</span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">yield_kg_per_ha =</span> <span class="fu">bushels_per_acre_to_kgs_per_hectare</span>(</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>      yield_bushels_per_acre,</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">crop =</span> <span class="st">"corn"</span></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Wrap this code into a function</span></span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>fortify_with_metric_units <span class="ot">&lt;-</span> <span class="cf">function</span>(data, crop) {</span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a>  data <span class="sc">%&gt;%</span></span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a>      <span class="at">farmed_area_ha =</span> <span class="fu">acres_to_hectares</span>(farmed_area_acres),</span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">yield_kg_per_ha =</span> <span class="fu">bushels_per_acre_to_kgs_per_hectare</span>(</span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a>        yield_bushels_per_acre, </span>
+<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a>        <span class="at">crop =</span> crop</span>
+<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb25-25"><a href="#cb25-25" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb25-26"><a href="#cb25-26" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb25-27"><a href="#cb25-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-28"><a href="#cb25-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Try it on the wheat dataset</span></span>
+<span id="cb25-29"><a href="#cb25-29" aria-hidden="true" tabindex="-1"></a><span class="fu">fortify_with_metric_units</span>(wheat, <span class="at">crop =</span> <span class="st">"wheat"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="plotting-yields-over-time" class="level2" data-number="4.9">
+<h2 data-number="4.9" class="anchored" data-anchor-id="plotting-yields-over-time"><span class="header-section-number">4.9</span> Plotting yields over time</h2>
+<p>Now that the units have been dealt with, it’s time to explore the datasets. An obvious question to ask about each crop is, “how do the yields change over time in each US state?” Let’s draw a line plot to find out!</p>
+<p>ggplot2 is loaded, and corn and wheat datasets are available with metric units.</p>
+</section>
+<section id="instructions-100-xp-22" class="level2" data-number="4.10">
+<h2 data-number="4.10" class="anchored" data-anchor-id="instructions-100-xp-22"><span class="header-section-number">4.10</span> Instructions <code>100 XP</code></h2>
+<ul>
+<li><p>Using the corn dataset, plot yield_kg_per_ha versus year. Add a line layer grouped by state and a smooth trend layer.</p></li>
+<li><p>Turn the plotting code into a function, plot_yield_vs_year(). This should accept a single argument, data.</p></li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>E26.R</strong></pre>
+</div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Using corn, plot yield (kg/ha) vs. year</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(corn, <span class="fu">aes</span>(year, yield_kg_per_ha)) <span class="sc">+</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add a line layer, grouped by state</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group =</span> state)) <span class="sc">+</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add a smooth trend layer</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Wrap this plotting code into a function</span></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>plot_yield_vs_year <span class="ot">&lt;-</span> <span class="cf">function</span>(data) {</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(data, <span class="fu">aes</span>(year, yield_kg_per_ha)) <span class="sc">+</span></span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group =</span> state)) <span class="sc">+</span></span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>()</span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Test it on the wheat dataset</span></span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_yield_vs_year</span>(wheat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="a-nation-divided" class="level2" data-number="4.11">
+<h2 data-number="4.11" class="anchored" data-anchor-id="a-nation-divided"><span class="header-section-number">4.11</span> A nation divided</h2>
+<p>The USA has a varied climate, so we might expect yields to differ between states. Rather than trying to reason about 50 states separately, we can use the USA Census Regions to get 9 groups.</p>
+<p>The “Corn Belt”, where most US corn is grown is in the “West North Central” and “East North Central” regions. The “Wheat Belt” is in the “West South Central” region.</p>
+<p>dplyr is loaded, the corn and wheat datasets are available, as is usa_census_regions.</p>
+</section>
+<section id="instructions-100-xp-23" class="level2" data-number="4.12">
+<h2 data-number="4.12" class="anchored" data-anchor-id="instructions-100-xp-23"><span class="header-section-number">4.12</span> Instructions <code>100 XP</code></h2>
+<ul>
+<li>Inner join corn to usa_census_regions by “state”.</li>
+<li>Turn the code into a function, fortify_with_census_region(). This should accept a single argument, data.</li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>E27.R</strong></pre>
+</div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inner join the corn dataset to usa_census_regions by state</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>corn <span class="sc">%&gt;%</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(usa_census_regions, <span class="at">by =</span> <span class="st">"state"</span>)</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Wrap this code into a function</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>fortify_with_census_region <span class="ot">&lt;-</span> <span class="cf">function</span>(data){</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>  data <span class="sc">%&gt;%</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">inner_join</span>(usa_census_regions, <span class="at">by =</span> <span class="st">"state"</span>)</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Try it on the wheat dataset</span></span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a><span class="fu">fortify_with_census_region</span>(wheat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="plotting-yields-over-time-by-region" class="level2" data-number="4.13">
+<h2 data-number="4.13" class="anchored" data-anchor-id="plotting-yields-over-time-by-region"><span class="header-section-number">4.13</span> Plotting yields over time by region</h2>
+<p>So far, you have used a function to plot yields over time for each crop, and you’ve added a census_region column to the crop datasets. Now you are ready to look at how the yields change over time in each region of the USA.</p>
+<p>ggplot2 is loaded. corn and wheat have been fortified with census regions. plot_yield_vs_year() is available.</p>
+</section>
+<section id="instructions-100-xp-24" class="level2" data-number="4.14">
+<h2 data-number="4.14" class="anchored" data-anchor-id="instructions-100-xp-24"><span class="header-section-number">4.14</span> Instructions <code>100 XP</code></h2>
+<ul>
+<li>Use the function you wrote to plot yield versus year for the corn dataset, then facet the plot, wrapped by census_region.</li>
+<li>Turn the code into a function, plot_yield_vs_year_by_region(), that should take a single argument, data.</li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>E28.R</strong></pre>
+</div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot yield vs. year for the corn dataset</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_yield_vs_year</span>(corn) <span class="sc">+</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Facet, wrapped by census region</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(census_region))</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Wrap this code into a function</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>plot_yield_vs_year_by_region <span class="ot">&lt;-</span> <span class="cf">function</span>(data) {</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_yield_vs_year</span>(data) <span class="sc">+</span></span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(census_region))</span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Try it on the wheat dataset</span></span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_yield_vs_year_by_region</span>(wheat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="running-a-model" class="level2" data-number="4.15">
+<h2 data-number="4.15" class="anchored" data-anchor-id="running-a-model"><span class="header-section-number">4.15</span> Running a model</h2>
+<p>The smooth trend line you saw in the plots of yield over time use a generalized additive model (GAM) to determine where the line should lie. This sort of model is ideal for fitting nonlinear curves. So we can make predictions about future yields, let’s explicitly run the model. The syntax for running this GAM takes the following form.</p>
+<blockquote class="blockquote">
+<p>gam(response ~ s(explanatory_var1) + explanatory_var2, data = dataset)</p>
+</blockquote>
+<p>Here, s() means “make the variable smooth”, where smooth very roughly means nonlinear.</p>
+<p>mgcv and dplyr are loaded; the corn and wheat datasets are available.</p>
+</section>
+<section id="instructions-100-xp-25" class="level2" data-number="4.16">
+<h2 data-number="4.16" class="anchored" data-anchor-id="instructions-100-xp-25"><span class="header-section-number">4.16</span> Instructions <code>100 XP</code></h2>
+<ul>
+<li>Run a GAM of yield_kg_per_ha versus smoothed year and census region, using the corn dataset.</li>
+<li>Wrap the modeling code into a function, run_gam_yield_vs_year_by_region. This should take a single argument, data, with no default.</li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>E29.R</strong></pre>
+</div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run a generalized additive model of yield vs. smoothed year and census region</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="fu">gam</span>(yield_kg_per_ha <span class="sc">~</span> <span class="fu">s</span>(year) <span class="sc">+</span> census_region, <span class="at">data =</span> corn)</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Wrap the model code into a function</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>run_gam_yield_vs_year_by_region <span class="ot">&lt;-</span> <span class="cf">function</span>(data){</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gam</span>(yield_kg_per_ha <span class="sc">~</span> <span class="fu">s</span>(year) <span class="sc">+</span> census_region, <span class="at">data =</span> corn)</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Try it on the wheat dataset</span></span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a><span class="fu">run_gam_yield_vs_year_by_region</span>(wheat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="making-yield-predictions" class="level2" data-number="4.17">
+<h2 data-number="4.17" class="anchored" data-anchor-id="making-yield-predictions"><span class="header-section-number">4.17</span> Making yield predictions</h2>
+<p>The fun part of modeling is using the models to make predictions. You can do this using a call to predict(), in the following form.</p>
+<p>predict(model, cases_to_predict, type = “response”) mgcv and dplyr are loaded; GAMs of the corn and wheat datasets are available as corn_model and wheat_model. A character vector of census regions is stored as census_regions.</p>
+</section>
+<section id="instructions-100-xp-26" class="level2" data-number="4.18">
+<h2 data-number="4.18" class="anchored" data-anchor-id="instructions-100-xp-26"><span class="header-section-number">4.18</span> Instructions <code>100 XP</code></h2>
+<ul>
+<li>In predict_this, set the prediction year to 2050.</li>
+<li>Predict the yield using corn_model and the cases specified in predict_this.</li>
+<li>Mutate predict_this to add the prediction vector as a new column named pred_yield_kg_per_ha.</li>
+<li>Wrap the script into a function, predict_yields. It should take two arguments, model and year, with no defaults. Remember to update 2050 to the year argument. Try predict_yields() on wheat_model with year set to 2050.</li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>E30.R</strong></pre>
+</div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Make predictions in 2050  </span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>predict_this <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">year =</span> <span class="dv">2050</span>,</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">census_region =</span> census_regions</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>) </span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict the yield</span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>pred_yield_kg_per_ha <span class="ot">&lt;-</span> <span class="fu">predict</span>(corn_model, predict_this, <span class="at">type =</span> <span class="st">"response"</span>)</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>predict_this <span class="sc">%&gt;%</span></span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add the prediction as a column of predict_this </span></span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">pred_yield_kg_per_ha =</span> pred_yield_kg_per_ha)</span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Wrap this prediction code into a function</span></span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>predict_yields <span class="ot">&lt;-</span> <span class="cf">function</span>(model, year) {</span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>  predict_this <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">year =</span> <span class="dv">2050</span>,</span>
+<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">census_region =</span> census_regions</span>
+<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a>  ) </span>
+<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a>  pred_yield_kg_per_ha <span class="ot">&lt;-</span> <span class="fu">predict</span>(model, predict_this, <span class="at">type =</span> <span class="st">"response"</span>)</span>
+<span id="cb30-21"><a href="#cb30-21" aria-hidden="true" tabindex="-1"></a>  predict_this <span class="sc">%&gt;%</span></span>
+<span id="cb30-22"><a href="#cb30-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">pred_yield_kg_per_ha =</span> pred_yield_kg_per_ha)</span>
+<span id="cb30-23"><a href="#cb30-23" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb30-24"><a href="#cb30-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-25"><a href="#cb30-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Try it on the wheat dataset</span></span>
+<span id="cb30-26"><a href="#cb30-26" aria-hidden="true" tabindex="-1"></a><span class="fu">predict_yields</span>(wheat_model,<span class="dv">2050</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="do-it-all-over-again" class="level2" data-number="4.19">
+<h2 data-number="4.19" class="anchored" data-anchor-id="do-it-all-over-again"><span class="header-section-number">4.19</span> Do it all over again</h2>
+<p>Hopefully, by now, you’ve realized that the real benefit to writing functions is that you can reuse your code easily. Now you are going to rerun the whole analysis from this chapter on a new crop, barley. Since all the infrastructure is in place, that’s less effort than it sounds!</p>
+<p>Barley prefers a cooler climate compared to corn and wheat and is commonly grown in the US mountain states of Idaho and Montana.</p>
+<p>dplyr and ggplot2, and mgcv are loaded; fortify_with_metric_units(), fortify_with_census_region(), plot_yield_vs_year_by_region(), run_gam_yield_vs_year_by_region(), and predict_yields() are available.</p>
+</section>
+<section id="instructions-100-xp-27" class="level2" data-number="4.20">
+<h2 data-number="4.20" class="anchored" data-anchor-id="instructions-100-xp-27"><span class="header-section-number">4.20</span> Instructions <code>100 XP</code></h2>
+<ul>
+<li>Fortify the barley data with metric units, then with census regions.</li>
+<li>Using the fortified barley data, plot the yield versus year by census region.</li>
+<li>Using the fortified barley data, run a GAM of yield versus year by census region, then predict the yields in 2050.</li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>E31.R</strong></pre>
+</div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>fortified_barley <span class="ot">&lt;-</span> barley <span class="sc">%&gt;%</span> </span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Fortify with metric units</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">fortify_with_metric_units</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Fortify with census regions</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fortify_with_census_region</span>()</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="co"># See the result</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(fortified_barley)</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="co"># From previous step</span></span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>fortified_barley <span class="ot">&lt;-</span> barley <span class="sc">%&gt;%</span> </span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fortify_with_metric_units</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fortify_with_census_region</span>()</span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot yield vs. year by region</span></span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_yield_vs_year_by_region</span>(fortified_barley)</span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a><span class="co"># From previous step</span></span>
+<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a>fortified_barley <span class="ot">&lt;-</span> barley <span class="sc">%&gt;%</span> </span>
+<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fortify_with_metric_units</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb31-21"><a href="#cb31-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fortify_with_census_region</span>()</span>
+<span id="cb31-22"><a href="#cb31-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-23"><a href="#cb31-23" aria-hidden="true" tabindex="-1"></a>fortified_barley <span class="sc">%&gt;%</span> </span>
+<span id="cb31-24"><a href="#cb31-24" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Run a GAM of yield vs. year by region</span></span>
+<span id="cb31-25"><a href="#cb31-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">run_gam_yield_vs_year_by_region</span>()  <span class="sc">%&gt;%</span> </span>
+<span id="cb31-26"><a href="#cb31-26" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Make predictions of yields in 2050</span></span>
+<span id="cb31-27"><a href="#cb31-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">predict_yields</span>(<span class="dv">2050</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
